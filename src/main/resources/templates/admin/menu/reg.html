@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="inc/layout">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .n-container {
+      --container-max-width: 900px;
+    }
+
+    input:invalid {
+      background-color: red;
+    }
+
+    .n-form>div::after {
+      content: "X";
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .n-form>div:has(input:invalid)::after {
+      opacity: 1;
+    }
+
+    .preview-panel {
+      overflow: hidden;
+    }
+
+    .preview-panel img {
+      height: 100px;
+
+      /* opacity: 0;
+          transition: opacity 1s; */
+      transform: translateX(-200px);
+      /* position: relative;
+          left:-200px; */
+      transition: transform 1s;
+    }
+
+    .n-form>div:has(input:invalid)::after {
+      width: 100px;
+    }
+
+    .preview-panel img.fade-in {
+      opacity: 1;
+    }
+
+    .preview-panel img.slide-in {
+      transform: translateX(0);
+
+      /* left: 10px; */
+    }
+
+    .img-label.valid {
+      border: 1px solid green;
+    }
+
+     .img-label.invalid {
+      border: 1px solid red;
+    }
+
+    .img-label.invalid::after {
+      content:"파일형식이 아닙니다";
+      display: inline-block;
+    }
+
+
+  </style>
+  <script src="/js/admin/menu/reg.js" defer></script>
+
+</head>
+
+<body>
+  <main layout:fragment="main" class="n-container mx:auto">
+    <header class="d:flex ai:center">
+      <h1 class="n-font n-font:heading-3 fw:3 deco deco-size:3 icon:file_plus">메뉴 목록</h1>
+      <div><button class="n-btn n-btn-type:filled">취소</button></div>
+    </header>
+    <section id="menu-add">
+      <h1 class="d:none">메뉴 등록 폼</h1>
+      <form action="reg" method="post" enctype="multipart/form-data" class="n-form md:n-field-label-position:left"
+        novalidate>
+        <div>
+          <label>
+            <span>한글명</span>
+            <input type="text" name="korName" autofocus autocomplete="off" placeholder="3글자이상 10글자이하로 작성해주세요" required
+              minlength="3" maxlength="10" list="menu-list" />
+            <datalist id="menu-list">
+              <option>아메리카노</option>
+              <option>카페라떼</option>
+              <option>딸기라떼</option>
+              <option>카페모카</option>
+            </datalist>
+          </label>
+        </div>
+        <div>
+          <label>
+            <span>영문명</span>
+            <input type="text" name="engName" placeholder="3자 이상의 영문명을 입력해주세요" />
+          </label>
+        </div>
+        <div>
+          <label class="img-label">
+            <span>이미지</span>
+            <input class="d:none img-input" name="img-file" type="file" multiple />
+          </label>
+        </div>
+        <div class="preview-panel"></div>
+        <div>
+          <label>
+            <span>가격</span>
+            <input type="number" name="price" placeholder="필수입력" required min="0" max="100000" />
+          </label>
+        </div>
+        <div><button class="n-btn">등록</button></div>
+      </form>
+    </section>
+  </main>
+</body>
+
+</html>

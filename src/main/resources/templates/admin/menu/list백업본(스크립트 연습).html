@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> //src="../templates/admin/menu/dom.js"
+    
+        window.onload = function () {
+            
+            var exam = new Object();
+            exam.kor = 30;
+            console.log(exam);
+            delete exam.kor;
+            console.log(exam);
+
+            var st1 = "var x = 30;";
+
+            var st2 = '{"id":1,"title":"hello"}';
+            var st3 = '[23,"hello"]';
+
+
+            // eval(st1);
+            // eval(st2);
+            console.log(st2);
+            var notice = JSON.parse(st2); //json객체로 바꿈
+            console.log(notice.title);
+            console.log(typeof notice);
+
+
+            var n = JSON.stringify(notice); //원격으로 보내기 위해 json객체를 json표기법의 문자열로 변환함
+            console.log(n);
+            console.log(typeof n);
+
+            console.log(true || true);
+            console.log("" || false);
+
+            var x = null;
+            var y = null;
+            var z = 50;
+
+            var result = x || y || z; //연속되지 않은 서로 다른 변수들을 비교해서 참인 값을 보고 싶을때
+            console.log(result);
+
+            // var kor = prompt("국어 성적을 입력해주세요");
+            // var result = kor || 0;
+            // result = result + 2;
+            // console.log(result);
+
+            var result = "처음" && "두번째";
+            console.log(result);
+
+            var result = (true || false) && false;
+            console.log(result);
+
+            var a = 3 - 'a';
+            console.log(a);
+            if (isNaN(a)) {
+                console.log('인도커리는 역시 죠티');
+            }
+            // var add = new Function("x,y","return x + y;");
+
+            // var add = function(x,y){
+            //     return x+y;
+            // }
+
+            // function add(x,y){
+            // return x+y;
+            // }
+
+            function add() {
+                var x = arguments[0]; //매개변수가 딱 정의된게 아니고 아규먼트컬렉션 안에 순서대로 담긴다
+                var y = arguments[1];
+                return x + y;
+            }
+            console.log(add(3, 4, 5, 6, 7)); //그래서 매개변수를 맞춰서 넣지 않아도 동작한다
+            console.log(add(3));
+
+
+        }
+        // a = 2;
+        // alert(window.a);
+
+        // var f1 = function(){
+        //     a = 2;
+        //     var a = 1;
+
+        //     console.log(window.a);
+        //     console.log(a);
+        // }
+        // f1();
+
+        var f3;
+        var x = 100;
+
+        var f1 = function () {
+            var x = 40;
+
+            f3 = function () {
+                console.log(x);
+                console.log(window.x);
+            }
+        }
+
+        f1();
+        f3();
+
+        function Exam() {
+            var kor = 1;
+            window.kor=2;
+            this.kor=3;
+            // kor=10;
+            // eng=20;
+            // math=30;
+
+            console.log(kor,window.kor,this.kor);
+        }
+        function Exam() { //생성자처럼 보이게 만들어줌
+            this.kor = 20;
+            this.eng = 30;
+            this.math = 41;
+            
+        }
+
+        // Exam.prototype.total = function(){
+        //     return this.kor+this.eng+this.math;
+        // }
+        // Exam.prototype.avg = function(){
+        //     return this.total()/3;
+        // }
+        Exam.prototype = {
+            total:function(){  //키:값 순서
+                return this.kor+this.eng+this.math;
+            },
+            avg:function(){
+                return this.total()/3;
+            }
+        }
+
+        var exam1 = new Exam();
+        console.log("국어점수: ",exam1.kor);
+        console.log("total: ",exam1.total());
+        console.log("avg: ",parseInt(exam1.avg()));
+        // console.log(exam1.avg());
+        
+        // Exam();
+        // new Exam();
+
+        // Array.prototype.muyaho = function() {
+        //     console.log("무야호~");
+        // };
+        
+        // ar.muyaho();
+
+        console.log("Array.prototype: ",Array.prototype);
+        Array.prototype = {
+            total:function(){  //키:값 순서
+                return 1;
+            },
+            avg:function(){
+                return 2;
+            }
+        };
+        var ar = [];
+        console.log("ar.prototype: ",ar.constructor.prototype);
+
+        console.log("Exam.prototype: ",Exam.prototype);
+        console.log("Exam1.prototype: ",exam1.constructor.prototype);
+        console.log("Exam1.__proto__: ",exam1.__proto__);
+
+        function NewExam(){
+            this.com = 20;
+        };
+        console.log("대치전 NewExam.prototype",NewExam.prototype);
+
+         NewExam.prototype = new Exam();
+         console.log("대치후 NewExam.prototype",NewExam.prototype);
+
+         NewExam.prototype.total = function(){
+            return this.kor+this.eng+this.math+this.com;
+        };
+        NewExam.prototype.avg = function(){
+            return this.total()/4;
+        };
+        
+        //  NewExam.prototype = {
+        //     total:function(){  //키:값 순서
+        //         return this.kor+this.eng+this.math+this.com;
+        //     },
+        //     avg:function(){
+        //         return this.total()/4;
+        //     }
+        // };
+        console.log("재정의후 NewExam.prototype",NewExam.prototype);
+
+        
+         var examCom = new NewExam();
+         console.log("examCom.kor: ",examCom.total(),"examCom.avg: ",examCom.avg());
+
+         ar=[1,2,3,4,5];
+         ar.forEach(n => 
+            console.log(n)
+         );
+    </script>
+</head>
+
+<body>
+    <main layout:fragment="main">
+        <section>
+            <header class="d:flex">
+                <h1 class="deco icon:megaphone fw:3 fs:3">메뉴목록</h1>
+                <div><button class="n-btn n-btn-color:accent n-btn-size:1">추가</button></div>
+            </header>
+
+            <section class="background-color:main-4 p:2 border-radius:3">
+                <h1 class="display:none">카테고리목록</h1>
+                <ul class="n-list n-tag-list">
+                    <li class="active"><a href="">커피</a></li>
+                    <li><a href="">쿠키</a></li>
+                    <li><a onclick="alert('ㄴㅇㄹㄴ')" href="">과일청</a></li>
+                    <li><a href="">샌드위치</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 class="d:none">메뉴 검색폼</h1>
+                <form action="" class="n-form">
+                    <div>
+                        <label for="" class="flex-direction:row d:flex align-items:center">
+                            <span class="font-weight:3 color:base-7 w:1">메뉴명</span>
+                            <input class="n-textbox">
+                        </label>
+                    </div>
+                    <div class="flex-direction:row d:flex justify-content:center">
+                        <button class="n-btn n-btn-type:outline deco icon:magnifying_glass">검색</button>
+                        <button id="a1" class="n-btn n-btn-type:outline">초기화</button>
+                    </div>
+                </form>
+            </section>
+
+        </section>
+        <div><input type="button" value="버튼인가?" id="btn" class="n-btn"></input></div>
+        <span onclick="calc();">클릭해보시오</span>
+    </main>
+</body>
+
+</html>

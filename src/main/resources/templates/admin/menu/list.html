@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/components/menu/card.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/menu/menu-filter.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/menu/basket-status.css" rel="stylesheet" type="text/css">
+    <link href="/css/components/menu/list.css" rel="stylesheet" type="text/css">
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <main layout:fragment="main">
+        <section>
+            <header class="d:flex">
+                <h1 class="deco icon:megaphone fw:3 fs:3">메뉴목록</h1>
+                <div><a class="n-btn n-btn-color:accent n-btn-size:1" href="reg">추가</a></div>
+            </header>
+
+            <section class="background-color:main-4 p:2 border-radius:3">
+                <h1 class="display:none">카테고리목록</h1>
+                <ul class="n-list n-tag-list">
+                    <li class="active"><a href="">커피</a></li>
+                    <li><a href="">쿠키</a></li>
+                    <li><a onclick="alert('ㄴㅇㄹㄴ')" href="">과일청</a></li>
+                    <li><a href="">샌드위치</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 class="d:none">메뉴 검색폼</h1>
+                <form action="" class="n-form">
+                    <div>
+                        <label for="" class="flex-direction:row d:flex align-items:center">
+                            <span class="font-weight:3 color:base-7 w:1">메뉴명</span>
+                            <input class="n-textbox">
+                        </label>
+                    </div>
+                    <div class="flex-direction:row d:flex justify-content:center">
+                        <button class="n-btn n-btn-type:outline deco icon:magnifying_glass">검색</button>
+                        <button id="a1" class="n-btn n-btn-type:outline">초기화</button>
+                    </div>
+                </form>
+            </section>
+
+            <section class="menu-card-list mb:5" id="menu-card-list">
+                <h1 class="d:none">메뉴 목록</h1>
+                <div class="content fade">
+                    <section class="menu-card" th:each="m : ${list}">
+                        <h1>
+                            <a class="heading-3" href="detail.html" th:href="@{/menu/detail(id = ${m.id})}"
+                                th:text="${m.korName}">카페라떼1</a>
+                        </h1>
+                        <h2 class="heading-2 font-weight:normal color:base-5" th:text="${m.engName}">Cafe Latte</h2>
+                        <div class="price-block d:flex align-items:flex-end"><span class="font-weight:bold"
+                                th:text="${m.price}">4,500</span>원<span
+                                class="soldout-msg ml:auto mr:auto md:d:none">SOLD OUT</span></div>
+                        <div class="img-block">
+                            <a href="detail.html" th:href="@{/menu/detail(id = ${m.id})}"><img
+                                    src="/image/menu/8.jpg" th:src="'/image/menu/'+${m.img}"></a>
+                        </div>
+                        <div class="like-block d:flex justify-content:flex-end">
+                            <a class="icon icon-heart-fill icon-color:base-4" href="">좋아요</a>
+                            <span class="font-weight:bold ml:1" th:text="${m.likeCount}">2</span>
+                        </div>
+                        <div class="pay-block d:flex">
+                            <!-- <a class="icon md:icon:none icon-cart icon-color:base-0 color:base-0 btn-type:icon btn-cart md:btn-type:text"
+                                href="">담기</a> -->
+                                <form action="/cart/add-menu" method="post">
+                                    <input type="hidden" name="id" th:value="${m.id}">
+                                    <button 
+                                    th:data-id="${m.id}"
+                                    th:data-korname="${m.korName}"
+                                    th:data-engname="${m.engName}"
+                                    th:data-price="${m.price}"
+                                    th:data-regdateError="${m.regDate}"
+                                    th:data-img="${m.img}"
+                                    th:data-categoryid="${m.categoryId}"
+
+                                    class="icon md:icon:none icon-cart icon-color:base-0 color:base-0 btn-type:icon btn-cart md:btn-type:text"
+                                    href="">담기</button>
+                                </form>
+                            <a class="icon md:icon:none icon-card icon-color:base-0 color:base-0 btn-type:icon btn-card md:btn-type:text"
+                                href="">주문하기</a>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+        </section>
+        <div><input type="button" value="버튼인가?" id="btn" class="n-btn"></input></div>
+        <span onclick="calc();">클릭해보시오</span>
+    </main>
+</body>
+
+</html>

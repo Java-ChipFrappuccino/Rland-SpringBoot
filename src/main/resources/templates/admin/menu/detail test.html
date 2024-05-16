@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="inc/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/newtil-css@0.1.32/dist/style.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../../../static/css/root.css"> -->
+    <script src="./test.js" defer></script>
+
+
+</head>
+
+<body>
+    <main layout:fragment="main">
+        <div>
+            <img src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20231122_276%2F1700611433492zk1uO_JPEG%2Fmovie_image.jpg"
+                width="100%" alt="">
+        </div>
+        <div class="display:flex padding:2">
+            <h1
+                class="padding-left:1 margin-right:auto border-left border-width:3 border-color:main-3 fs:6 fw:3 d:flex ai:center">
+                서울의 봄
+            </h1>
+            <div class="display:flex align-items:center"><button class="n-btn n-btn-size:2" id="myButton">평가하기</button>
+            </div>
+        </div>
+        <div id="myDiv" class="flex" style="display: none;">숨겨진 div</div>
+        <div class="padding-left:2 padding-right:2 display:flex gap:4">
+            <span class="margin-right:auto icon icon-size:5 icon:hand_coins">아이콘</span>
+            <span class="fs:6 fw:3">감정가</span>
+            <span class="fs:6 fw:3 color:accent-3">30,000원</span>
+        </div>
+        <div class="padding:2">
+            <h1 class="padding-left:1 margin-right:auto border-left border-width:3 border-color:main-3 fs:6 fw:3">감독 및
+                배우</h1>
+            <section class="display:flex padding:2">
+                <div class="margin-right:10">
+                    <a href="">
+                        <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F201311%2F20131118115820901-1644449.jpg"
+                            width="100px" height="auto" alt="">
+                        <div class="padding:1">
+                            <div><span>김성수</span></div>
+                            <div><span class="fs:2 color:base-6">아수라,비트</span></div>
+                        </div>
+                    </a>
+                </div>
+                <ul class="d:flex width:10p fl-wrap:wrap gap:5 test">
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="d:flex">
+                        <a href="">
+                            <div class="display:flex margin-right:4">
+                                <img src="https://search.pstatic.net/common?type=n&size=174x196&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2Fportrait%2F202003%2F20200316134444946.jpg"
+                                    width="48px" height="auto" alt="">
+                            </div>
+                            <div class="padding:1 fs:3">
+                                <div>
+                                    <span>정우성</span>
+                                </div>
+                                <div>
+                                    <span class="fs:2 color:base-6">이태신</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+            </section>
+        </div>
+        <div class="padding:2">
+            <h1 class="padding-left:1 margin-right:auto border-left border-width:3 border-color:main-3 fs:6 fw:3">예고편
+            </h1>
+            <div class="display:flex gap:1">
+                <div>
+                    <video width="100%" height="100%" controls preload="metadata"> 
+                        <source src="https://www.kmdb.or.kr/trailer/play/MK060294_P02.mp4" type="video/mp4">  Your
+                        browser does not support the video tag.
+                    </video>
+                </div>
+                <div>
+                    <video width="100%" height="100%" controls preload="metadata"> 
+                        <source src="https://www.kmdb.or.kr/trailer/play/MK060294_P02.mp4" type="video/mp4">  Your
+                        browser does not support the video tag.
+                    </video>
+                </div>
+
+            </div>
+        </div>
+        <div class="padding:2">
+            <h1 class="padding-left:1 margin-right:auto border-left border-width:3 border-color:main-3 fs:6 fw:3">스틸컷
+            </h1>
+            <div class="display:flex gap:1">
+                <span><img
+                        src="https://search.pstatic.net/common?qualit y=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20231102_299%2F1698892733787ApmPu_JPEG%2Fmovie_image.jpg"
+                        alt="" height="140px"></span>
+                <span><img
+                        src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20231102_207%2F1698892658560ruH0F_JPEG%2Fmovie_image.jpg"
+                        alt="" height="140px"></span>
+                <span><img
+                        src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20231025_175%2F1698220413507OCUNi_JPEG%2Fmovie_image.jpg"
+                        alt="" height="140px"></span>
+                <span><img
+                        src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20231030_128%2F1698629379447qbAHH_JPEG%2Fmovie_image.jpg"
+                        alt="" height="140px"></span>
+            </div>
+        </div>
+        <div class="padding:2">
+            <h1 class="padding-left:1 margin-right:auto border-left border-width:3 border-color:main-3 fs:6 fw:3">한줄 평
+            </h1>
+        </div>
+
+
+    </main>
+</body>
+
+</html>
