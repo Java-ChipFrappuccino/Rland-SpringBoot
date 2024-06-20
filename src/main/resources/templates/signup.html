@@ -9,8 +9,8 @@ xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thyme
 
     <main layout:fragment="main">
         <section class="login-form">
-            <h1 class="heading-7 text-align:center">Rland Login</h1>
-            <section th:if="${param.error ne null}" class="n-modal" tabindex="-1">
+            <h1 class="heading-7 text-align:center">Rland Signup 회원가입 임시페이지</h1>
+            <section th:if="${param.error ne null}" class="" tabindex="-1">
                 <h1 class="n-font:h3 font-weight:3"></h1>
               
                 <div class="mt:8 text-a:center">아이디나 비밀번호가 일치하지 않습니다.</div>
@@ -32,7 +32,7 @@ xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thyme
                 <div class="mt:5">
                     <button class="btn btn-main w:1" type="submit">로그인</button>
                     <span class="w:1 d:inline-flex justify-content:center mt:3">또는</span>
-                    <a class="btn w:1 mt:3 al" href="/oauth2/authorization/google">
+                    <a class="btn w:1 mt:3 al" href="">
                         <span class="deco icon-google icon-size:3 w:1 d:inline-flex justify-content:center">구글 로그인</span></a>
                 </div>
                 <div class="mt:3 d:flex justify-content:center">

@@ -25,6 +25,12 @@ public class MemberController {
         return "user/signin";
     }
 
+    @GetMapping("signup")
+    public String signup() {
+
+        return "user/signup";
+    }
+
     // @PostMapping("signin")
     public String signin(String username,String password,HttpSession session,HttpServletResponse response) {
 

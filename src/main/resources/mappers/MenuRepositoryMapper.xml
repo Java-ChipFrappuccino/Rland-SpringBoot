@@ -69,4 +69,13 @@
 		where kor_name like '%${name}%'
 	</select> -->
 
+	<update id="update" parameterType="Menu">
+		UPDATE menu
+		<set>
+		id = #{id},
+		kor_name = #{korName},
+		</set>
+		WHERE id = #{id}
+	</update>
+
 </mapper>

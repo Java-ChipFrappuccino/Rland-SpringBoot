@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,6 +30,20 @@ public class MenuController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @GetMapping("test")
+    @ResponseBody
+    public String test(){
+        menuService.test();
+        return "test";
+    }
+
+    @GetMapping("test2")
+    @ResponseBody
+    public String test2(){
+        menuService.test2();
+        return "test2";
+    }
 
     //react list -----------------------------------------------------------------------
 //    @GetMapping("list-react")

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import kr.co.rland.web.entity.Menu;
 import kr.co.rland.web.entity.MenuView;
 import kr.co.rland.web.repository.MenuRepository;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class MenuServiceImp implements MenuService {
@@ -78,6 +80,33 @@ public class MenuServiceImp implements MenuService {
     public int add(Menu menu, List<String> filenames) {
         int affected = repository.save(menu);
         return affected;
+    }
+
+    @Override
+    @Transactional
+    public void test() {
+        Menu menu = Menu.builder().id(1499L).korName("언커밋").build();
+        repository.update(menu); // ----1
+        menu.setId(1509L);
+        menu.setKorName("김치볶음밥2000");
+        repository.update(menu); // ----2
+    }
+
+    @Override
+//    @Transactional(isolation = Isolation.READ_COMMITTED)
+    public void test2() {
+        Menu m1 = repository.findById(1499L);
+        System.out.println(m1);
+        System.out.println("------------/test1--------------");
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+        Menu m2 = repository.findById(1499L);
+        System.out.println(m2);
+        System.out.println("------------/test2--------------");
     }
 
     // @Override

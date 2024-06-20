@@ -2,23 +2,16 @@ package kr.co.rland.web.config;
 
 import javax.sql.DataSource;
 
-import com.nimbusds.openid.connect.sdk.claims.UserInfo;
+import kr.co.rland.web.config.security.LoginSuccessHandler;
 import kr.co.rland.web.config.security.WebOAuth2UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
-import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -31,6 +24,9 @@ public class WebSecurityConfig {
 
         @Autowired
         private WebOAuth2UserDetailsService webOAuth2UserDetailsService;
+
+        @Autowired
+        private LoginSuccessHandler loginSuccessHandler;
 
         @Bean
         public PasswordEncoder passwordEncoder(){
@@ -48,14 +44,21 @@ public class WebSecurityConfig {
                         .anyRequest().permitAll())
                 .formLogin((form) -> form
                         .loginPage("/user/signin")
-                        .permitAll())
+                        .permitAll()
+                        .successHandler(loginSuccessHandler))
+
                 .oauth2Login(config->config
                         .userInfoEndpoint(userInf->userInf
-                                .userService(webOAuth2UserDetailsService)))
-        .logout((logout) -> logout
-        .logoutUrl("/user/logout")
-        .logoutSuccessUrl("/index")
-        .permitAll());
+                            .userService(webOAuth2UserDetailsService))
+                        .successHandler(loginSuccessHandler))
+                        //이곳에서만 쓸꺼면 그냥 new해서 바로 쓰면 되고 여러곳에서 사용하려면 변수로 만들어 주면 된다
+                        // 로그인 성공후 추가적으로 사용할 로직 호출..
+                        // 관리자로 로그인하면 관리자페이지로 바로이동 한다던지 로컬서버에 가입이 안되있는 유저라면 가입페이지로 이동시킨다던지....
+                        //default url속성과 같은 기능이지만 핸들러는 추가적인 작업이나 여러 조건에 따라 리다이렉트 시킬수 있다, 내 입맛대로 손질가능
+                .logout((logout) -> logout
+                .logoutUrl("/user/logout")
+                .logoutSuccessUrl("/index")
+                .permitAll());
 
         return http.build();
     }

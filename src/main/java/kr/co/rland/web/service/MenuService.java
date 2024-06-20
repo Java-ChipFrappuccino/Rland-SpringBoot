@@ -19,7 +19,10 @@ public interface MenuService {
 
     int add(Menu menu , List<String> filenames);
 
-    
+    void test();
+
+    void test2();
+
     // List<MenuView> getSearchList(String search);
     
     

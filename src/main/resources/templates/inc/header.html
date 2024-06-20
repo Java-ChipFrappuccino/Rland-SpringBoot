@@ -12,8 +12,8 @@
                         <li><a class="icon icon-alert icon-color:base-0 icon-count-with" href="">알림<span>2</span></a></li>
                         <li sec:authorize="isAnonymous()"><a class="icon icon-person icon-color:base-0" href="/user/signin">로그인</a></li>
                         <li sec:authorize="isAuthenticated()">
-                            <span sec:authentication="principal.email">이거 나오면 망함</span>
-                            <span th:text="${#authentication.name}">이거 나오면 망함</span>
+                            <span sec:authentication="principal.name">이거 나오면 망함</span>
+<!--                            <span th:text="${#authentication.name}">이거 나오면 망함</span>-->
                             <a class="icon icon-sign-out icon-color:base-0" href="/user/logout">로그아웃</a></li>
                     </ul>
                 </nav>
