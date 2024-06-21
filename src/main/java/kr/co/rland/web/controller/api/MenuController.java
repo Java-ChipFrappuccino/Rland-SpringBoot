@@ -38,6 +38,7 @@ public class MenuController {
         if (userDetails != null) {
             memberId = userDetails.getId();
         }
+        // 빈 커밋 테스트
         // List<MenuView> list = menuService.getList(1);
         List<MenuView> menus = new ArrayList<>();
 
