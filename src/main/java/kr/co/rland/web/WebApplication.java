@@ -8,7 +8,7 @@ public class WebApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WebApplication.class, args);
-		System.out.println("hehe");
+		System.out.println("서버시작");
 	}
 
 }
