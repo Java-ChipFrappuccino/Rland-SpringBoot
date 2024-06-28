@@ -83,7 +83,7 @@ public class MenuServiceImp implements MenuService {
     }
 
     @Override
-    @Transactional
+    @Transactional // 트랜잭션을 적용하고 싶은 함수에 적용하면 해당 함수의 모든 작업들이 트랜잭션 처리가 된다
     public void test() {
         Menu menu = Menu.builder().id(1499L).korName("언커밋").build();
         repository.update(menu); // ----1
