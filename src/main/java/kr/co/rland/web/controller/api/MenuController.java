@@ -58,23 +58,26 @@ public class MenuController {
 
         return menus;
     }
-
+    // 디테일 데이터 요청
     @GetMapping("1")
     public Menu get(Long id){
         return null;
     }
 
+    // 메뉴 추가 요청
     @PostMapping
     public Menu add(Menu menu){
         return null;
     }
 
+    // 메뉴 수정 요청
     // @PatchMapping //의미가 조금 다름
     @PutMapping
     public Menu edit(Menu menu){
         return null;
     }
 
+    // 메뉴 삭제 요청
     @DeleteMapping
     public Menu delete(Long id){
         return null;
