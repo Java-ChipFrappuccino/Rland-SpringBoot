@@ -18,7 +18,7 @@ import kr.co.rland.web.entity.Menu;
 import kr.co.rland.web.entity.MenuView;
 import kr.co.rland.web.service.MenuService;
 
-
+//api요청 컨트롤러
 @RestController("ApiMenuController")
 @RequestMapping("api/menus")
 public class MenuController {
