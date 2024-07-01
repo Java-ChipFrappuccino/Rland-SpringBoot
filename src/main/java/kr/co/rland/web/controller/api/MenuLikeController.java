@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import kr.co.rland.web.entity.MenuLike;
 import kr.co.rland.web.service.MenuLikeService;
-
+// 메뉴 좋아요 api요청 컨트롤러
 @RestController
 @RequestMapping("api/menu-likes")
 public class MenuLikeController {
