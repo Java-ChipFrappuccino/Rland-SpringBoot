@@ -31,6 +31,7 @@ public class MenuController {
     @Autowired
     private CategoryService categoryService;
 
+    //트랜젝션 테스트용
     @GetMapping("test")
     @ResponseBody
     public String test(){
@@ -38,6 +39,7 @@ public class MenuController {
         return "test";
     }
 
+    //트랜젝션 테스트용
     @GetMapping("test2")
     @ResponseBody
     public String test2(){
