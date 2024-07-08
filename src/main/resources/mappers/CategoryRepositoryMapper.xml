@@ -10,7 +10,9 @@
 	</resultMap> -->
 	
 	<select id="findAll" resultType="Category">
-		select * from category
+		SELECT
+			*
+		FROM category
 	</select>
 	
 	<!-- <select id="findById" resultType="Category">
