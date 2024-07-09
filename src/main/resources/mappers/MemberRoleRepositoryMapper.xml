@@ -5,7 +5,9 @@
 <mapper namespace="kr.co.rland.web.repository.MemberRoleRepository">
 
 	<select id="findAllByMemberId" resultType="MemberRole">
-		select * from member_role where member_id=#{memberId}
+		SELECT
+			*
+		FROM member_role WHERE member_id=#{memberId}
 	</select>
 
 </mapper>
