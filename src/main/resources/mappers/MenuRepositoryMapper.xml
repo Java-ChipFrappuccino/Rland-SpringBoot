@@ -69,6 +69,7 @@
 		where kor_name like '%${name}%'
 	</select> -->
 
+	<!-- set절은 업데이트할 컬럼과 그 값을 지정하는데 사용한다 -->
 	<update id="update" parameterType="Menu">
 		UPDATE menu
 		<set>
