@@ -43,8 +43,10 @@
 	</select> -->
 
 	<select id="findById" resultType="Menu">
-		select * from menu
-		where id=#{id}
+		SELECT
+			*
+		FROM menu
+		WHERE id=#{id}
 	</select>
 
 	<select id="getCount" resultType="Integer">
