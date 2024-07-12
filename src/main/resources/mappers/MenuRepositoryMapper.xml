@@ -50,7 +50,8 @@
 	</select>
 
 	<select id="getCount" resultType="Integer">
-		select count(*) from menu
+		SELECT count(*)
+		FROM menu
 		<where>
 			<if test="categoryId != null">
    	 		category_id = #{categoryId}
